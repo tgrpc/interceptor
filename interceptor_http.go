@@ -31,7 +31,7 @@ func HttpInterceptorWarp(interceptors ...HttpInterceptor) func(http.HandlerFunc)
 	}
 }
 
-func HttpInterceptorWarpHandlerFunc(handler http.HandlerFunc, interceptors ...HttpInterceptor) http.HandlerFunc {
+func HttpInterceptorWarpHandleFunc(handler http.HandlerFunc, interceptors ...HttpInterceptor) http.HandlerFunc {
 	chainInterceptor := ChainHttpInterceptor(interceptors...)
 	return func(rw http.ResponseWriter, req *http.Request) {
 		chainInterceptor(rw, req, handler)
