@@ -17,7 +17,8 @@ func ChainHttpInterceptor(interceptors ...HttpInterceptor) HttpInterceptor {
 		for i := n - 1; i >= 0; i-- {
 			currHandler = chainer(interceptors[i], currHandler)
 		}
-		currHandler(rw, req)
+		currHandler.ServeHTTP(rw, req)
+		// currHandler(rw, req)
 		return currHandler
 	}
 }
